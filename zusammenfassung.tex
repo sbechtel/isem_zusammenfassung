@@ -1,0 +1,161 @@
+\documentclass[11pt,a4paper]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amsthm,amssymb,dsfont}
+\usepackage{mathtools}
+\usepackage[paper=a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{esint}
+\usepackage{csquotes}
+\usepackage{textcomp}
+
+\usepackage{setspace}
+
+\parindent 0pt
+\linespread{1.5}
+
+% Makros
+
+\newcommand{\N}{\mathbb{N}} % natuerliche Zahlen
+\newcommand{\Z}{\mathbb{Z}} % ganze Zahlen
+\newcommand{\Q}{\mathbb{Q}} % rationale Zahlen
+\newcommand{\R}{\mathbb{R}} % reelle Zahlen
+\newcommand{\K}{\mathbb{K}} % Körper
+\newcommand{\C}{\mathbb{C}} % komplexe Zahlen
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\circum}{\text{\textasciicircum}}
+
+% Umgebungen für Definitionen, Sätze, usw.
+
+\theoremstyle{plain}
+\newtheorem{thm}{Satz}[section]
+\newtheorem*{lem}{Lemma}
+\newtheorem{cor}[thm]{Korollar}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{ex}{Beispiel}
+\newtheorem*{ntion}{Notation}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem*{bem}{Bemerkung}
+\newtheorem{bemnumber}[thm]{Bemerkung}
+
+\def\Satzrefname{Satz}
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\esssupp}{ess supp}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\loc}{loc}
+\DeclareMathOperator{\pv}{pv}
+\DeclareMathOperator{\grad}{grad}
+\renewcommand{\Re}{\mathrm{Re}}
+
+\begin{document}
+
+\title{Zusammenfassung ISEM}
+\author{Sebastian Bechtel}
+\maketitle
+
+\section{Halbgruppentheorie}
+
+\subsection{Varianten von Hille-Yosida}
+
+Ziel dieses Abschnitts ist es, verschiedene Varianten von Hille-Yosida darzustellen und deren Verbindung zu untersuchen.
+
+Ist $T(t)$ eine C0-Halbgruppe, so gibt es bekanntlicherweise $M\geq 1$ sowie $\omega\in \R$ mit $\|T(t)\|\leq M \mathrm{e}^{\omega t}$. Die Wahl von $M$ und $\omega$ ist dabei nicht eindeutig. Damit $T(t)$ eine Kontraktionshalbgruppe sein kann, ist es notwendig, dass $M=1$ realisierbar ist. Ist $\omega\leq 0$, so ist die Halbgruppe beschränkt, und generell macht $\omega$ eine Aussage über die Asymptotik der Halbgruppe.
+
+Sei nun $A$ dicht definierter, abgeschlossener Operator auf einem Banachraum $X$.
+
+In einer einfachsten Variante von Hille-Yosida gelte $M=1$ und $\omega=0$. Dann ist $A$ genau dann Generator einer Kontraktionshalbgruppe $T(t)$, wenn $(0,\infty) \subset \rho(A)$ und $\|(A-\lambda)^{-1}\|\leq 1/\Re \lambda$ für $\lambda > 0$.
+
+Diese Variante ist äquivalent zu einer Version mit $\omega\in \R$: Dann ist $A$ genau dann Generator einer C0-Halbgruppe $T(t)$ mit $\|T(t)\|\leq \mathrm{e}^{\omega t}$, wenn $(\omega, 0)\subset \rho(A)$ und $\|(A-\lambda)^{-1}\|\leq 1/(\lambda-\omega)$ für $\lambda > \omega$.
+
+Dazu wird das Spektrum des Operators verschoben bzw. die Halbgruppe skaliert und jeweils das andere Resultat angewandt. Es gilt $\rho(A+\omega) = \rho(A)+\omega$ und der Generator von $\mathrm{e}^{\omega t}T(t)$ ist $A+\omega$, denn $$\lim_{t\to 0} \frac{1}{t} \left( \mathrm{e}^{\omega t} T(T)x-x\right) = \lim_{t\to 0} \mathrm{e}^{\omega t} \frac{1}{t} \left( T(t)x-x \right) + \lim_{t\to 0} \frac{1}{t} \left( \mathrm{e}^{\omega t}x -x \right) = Ax+\omega x.$$
+
+Es drängt sich die Frage auf, ob $M=1$ eine Einschränkung ist, oder dies durch hochdrehen von $\omega$ immer zu erreichen ist. Die Antwort ist negativ: Betrachte auf $L^1(\R)$ eine Linkstranslationshalbgruppe mit Sprung: $(T(t)f)(s) = 2f(s+t)$ für $s\in [-t,0]$, sonst $(T(t)f)(s)=f(s+t)$. Es gilt $\|T(t)\|=2$ für $t>0$ (betrachte $\chi_{[0,t]}$), somit ist $M=1$ nicht möglich, da $\mathrm{e}^{\omega t} \geq 2$ für alle $t>0$ für kein $\omega$ gilt.
+
+Für diese extra Freiheit bezahlen wir mit signifikant höheren Anforderungen an die Resolventenabschätzung. Es ist $A$ Generator einer C0-Halbgruppe mit $\|T(t)\|\leq M \mathrm{e}^{\omega t}$ genau dann, wenn $(\omega, \infty)\subset \rho(A)$ und $\|(A-\lambda)^{-n}\| \leq M/(\lambda-\omega)^n$ für $n\in \N$ und $\lambda > \omega$.
+
+Für $M=1$ erhalten wir die zweite Variante aus dieser, wenn wir nur die Resolventenabschätzung für $n=1$ berücksichtigen und diese Variante erhalten wir aus der zweiten, wenn wir die Potenzen der Resolvente mit der Submultiplikativität der Norm abschätzen.
+
+\subsection{Beispiele: analytisch und C0 implizieren sich gegenseitig nicht}
+
+Wir betrachten auf $C_b(\R)$ die Linkstranslationshalbgruppe. Dessen Generator ist $\frac{\mathrm{d}}{\mathrm{d}x}$. Sei $f\in C_b(\R) \setminus C_b^1(\R)$, dann ist $T(t)f \not\in D(\frac{\mathrm{d}}{\mathrm{d}x})$ und somit kann die Halbgruppe nicht analytisch sein.
+
+Betrachten wir die G.W.-Halbgruppe auf $C_b(\R)$, so ist diese analytisch, aber nicht stark stetig. Jedoch erhalten wir durch Einschränkung auf $BUC(\R)$ eine C0-Halbgruppe.
+
+% TODO ist BUC der Abschluss von C^2_b?
+
+% TODO Einschränkung von analytischen gibt C0, Verhältnis der Generatoren
+
+\section{Variation der Konstanten}
+
+Wir wollen $D_t u = \Delta u + g$ mit Anfangswert $u_0=f$ lösen. Dazu machen wir einen Ansatz über Variation der Konstanten. Die Lösung zum homogenen Problem $D_t v = \Delta v$ mit $v_0=f$ ist gegeben durch $v=T(t)f$. Das $f$ ist nun in der Rolle der zu variierenden Konstante. Wir machen den Ansatz $u(t)=T(t)f(t)$. Es soll also gelten: $$\Delta u + g = D_t u = \Delta T(t)f(t) + T(t)f'(t) = \Delta u(t) + T(t)f'(t).$$
+
+Also benötigen wir $g = T(t)f'(t)$. Wir erheben kurz $T(t)$ zur Operatorgruppe und erhalten die Gleichung $f'(t)=T(-t)g$ und erhalten durch aufintegrieren $f(t)=f(0)+\int_0^t T(-s)g(s) \mathrm{d}s$. Durch einsetzen in unseren Ansatz erhalten wir unter Berücksichtigung von $f(0)=f$ die Lösungsformel $$u(t)=T(t)f+\int_0^t T(t-s)g(s) \mathrm{d}s.$$
+
+\section{parabolische Gleichungen}
+
+\subsection{Einleitung}
+
+Unser finales Resultat wird sein, dass wir für ein beschränktes Gebiet $\Omega$ mit genügend glattem Rand das Cauchy-Problem $\partial_t u - \A u = g$ mit Anfangswert $u(0)=f$ und homogenem Dirichlet-Rand auf $[0,t]\times \overline{\Omega}$ lösen werden. Auf dem Weg dort hin werden wir sowohl einfachere Geometrien in Form von Ganzraum und Halbraum betrachten, sowie mit dem $\Delta$ als Prototypen für gleichmäßig elliptische Operatoren starten.
+
+Neben inhomogenen Problemen in beschränkter Zeit wie oben werden wir auch homogene Probleme in unbeschränkter Zeit betrachten, die unter den Rahmen der Halbgruppentheorie fallen, z.B. $\partial_t u - \A  u = 0$ auf $[0,\infty)\times \R^d$ mit Anfangswert $u(0)=f$, wobei $f\in C_b(\R^d)$. Hierbei wird das inhomogene Problem der Schlüssel sein und gewissermaßen die Rolle des elliptischen Problems in der bekannten Theorie einnehmen...
+
+\subsection{Ganzraum}
+
+\subsubsection{homogen mit $\Delta$}
+
+Wir betrachten die Gleichung $\partial_t u = \Delta u$ auf $[0,\infty)\times \R^d$ mit Anfangswert $u(0,x)=f(x)$ für $f\in C_b(\R^d)$. Die Gauß-Weierstraß Halbgruppe liefert für jedes $f$ eine Lösung der Gleichung. Die Halbgruppe ist analytisch und eingeschränkt auf $BUC(\R^d)$ stark-stetig.
+
+\subsubsection{inhomogen mit $\Delta$}
+
+Aus der homogenen Lösung erhalten wir via Variation der Konstanten (siehe oben!) eine Lösung der inhomogenen Gleichung $\partial_t u - \Delta u = g$ auf $[0,T]\times \R^d$ mit Anfangswert $u(0,x)=f(x)$, wobei $g\in C_b^{\alpha/2,\alpha}([0,T]\times \R^d)$ und $f\in C_b^{2+\alpha}(\R^d)$. Für die Lösung gilt $u\in C_b^{1+\alpha/2, 2+\alpha}([0,T]\times \R^d)$ (man beachte, dass die Regularität - im Gegensatz zum inhomogenen Halbgruppensetting - bis in die $0$ geht, was daran liegt, dass der Anfangswert selbst, im Vergleich zu $C_b(\R^d)$, regulär genug ist) und es gilt die Schauder-Abschätzung $$\|u\|_{C_b^{1+\alpha/2, 2+\alpha}([0,T]\times \R^d)}\leq C \left( \|f\|_{C_b^{2+\alpha}(\R^d)} + \|g\|_{C_b^{\alpha/2,\alpha}([0,T]\times \R^d)} \right).$$ Aus der Abschätzung folgt Stetigkeit und Injektivität des Lösungsoperators. Da Anwendung von $(\partial_t - \Delta)$ sowie Auswertung in $t=0$ auf eine Funktion aus $C_b^{1+\alpha/2, 2+\alpha}([0,T]\times \R^d)$ Daten der benötigten Regularität liefert, ist der Lösungsoperator auch surjektiv, also ein Isomorphismus der Banachräume.
+
+\subsubsection{inhomogen mit $\A$}
+
+Nun wollen wir in der obigen Gleichung $\Delta$ durch einen allgemeinen gleichmäßig elliptischen Operator $\A$ mit $\alpha$-Hölder-stetigen Koeffizienten ersetzen. Der inverse Operator des obigen Problems mit $\Delta$ ist der Datenoperator $u\mapsto (\partial_t u - \Delta u, u(0,\cdot))$. Dessen Invertierbarkeit wollen wir per Stetigkeitsmethode auf den Datenoperator mit $\A$ anstelle von $\Delta$ hochziehen. Dazu zeigen wir eine apriori-Abschätzung für $\A$ der Form $$\|u\|_{C_b^{1+\alpha/2,2+\alpha}([0,T]\times \R^d)} \leq C \left( \|\partial_t u - \A u\|_{C_b^{\alpha/2,\alpha}([0,T]\times \R^d)} + \|u(0,\cdot)\|_{C_b^{2+\alpha}(\R^d)} \right),$$ wobei $C$ nur von Schranken an die Elliptizitätskonstante $\mu$ und die $\alpha$-Hölder-Normen der Koeffizienten abhängt. Wir zeigen die Abschätzung zuerst für eine konstante Koeffizientenmatrix und verallgemeinern dann durch Einfrieren der Koeffizienten. Nun können wir das Segment $\A_\sigma = (1-\sigma)\Delta + \sigma \A$ untersuchen und stellen fest, dass diese Operatoren alle gleichmäßig elliptisch sind und die Elliptizitätskonstante sowie die $\alpha$-Hölder-Normen der Koeffizienten unabhängig von $\sigma$ sind. Wir erhalten also aus der oben formulierten apriori-Abschätzung eine uniforme Konstante und erhalten aus der Stetigkeitsmethode die Invertierbarkeit des Datenoperators mit $\A$ und somit die eindeutige Lösbarkeit des inhomogenen Problems mit $\A$.
+
+\subsubsection{Stetigkeitsmethode}
+
+Sind $X,Y$ Banachräume, $T_0,T_1:X\to Y$ stetig und es gibt eine Konstante $C>0$ mit $\|x\|_X \leq C \|T_\sigma x\|_Y$ wobei $T_\sigma = (1-\sigma) T_0 + \sigma T_1$ für $\sigma\in [0,1]$. Dann ist $T_\sigma$ invertierbar für alle $\sigma$ genau dann, wenn es für ein $\sigma$ invertierbar ist.
+
+\enquote{Gegenbeispiel}, falls die Konstante nicht unabhängig von $\sigma$ ist: $X=Y$ ist beliebiger Banachraum, $T_0=0$ und $T_1=1$. Dann ist für $T_\sigma$ eine solche Konstante durch $\sigma$ gegeben, aber $T_0$ ist nicht invertierbar, jedoch $T_\sigma$ für $\sigma\in (0,1]$.
+
+\subsubsection{homogen mit $\A$}
+
+Wir betrachten wieder ein inhomogenes Problem in unbeschränkter Zeit, und zwar $\partial_t u = \A u$ auf $[0,\infty)\times \R^d$ mit $u(0,x)=f(x)$, wobei $f\in C_b(\R^d)$. Dieses besitzt eine Lösung $u\in C^{1,2}([0,\infty)\times \R^d) \cap C([0,\infty)\times \R^d)$ wobei zusätzlich $u\in C_b([0,T]\times \R^d)$ sowie $u\in C_\mathrm{loc}^{1+\alpha/2,2+\alpha}((0,\infty)\times \R^d)$ gilt. Die ersten beiden Aussagen machen $u$ zu einer klassischen Lösung (insbesondere Gleichung punktweise formulierbar und Anfangswert durch Stetigkeit in der $0$ sinnvoll), die Beschränktheit bei beschränkter Zeit geht über Stetigkeit hinaus, da es keine Kompaktheit im Ort gibt und die lokale Hölderregularität kommt aus der Konstruktion als lokal gleichmäßiger Limes von Lösungen des inhomogenen Problems via Arzela-Ascoli. Die Lösung kann wieder mit einer Halbgruppe assoziiert werden, die auf $C_b(\R^d)$ analytisch und auf $BUC(\R^d)$ stark-stetig ist.
+
+\subsection{Halbraum}
+
+Wir betrachten nun analoge Probleme zum obigen Fall, jedoch nun auf dem Halbraum $\R^d_+$, sodass wir zusätzlich einen Randwert vorschreiben können, der bei uns immer der homogene Dirichletrandwert sein wird.
+
+\subsubsection{inhomogen mit $\Delta$}
+
+Wir untersuchen nun die Gleichung $\partial_t u - \Delta u = g$ auf $[0,T] \times \overline{\R^d_+}$ mit $u(0,x)=f(x)$ sowie $u(t,x)=0$ für $t\in [0,\infty), x\in \partial \R^d_+$, wobei $f\in C_b^{2+\alpha}(\overline{\R^d_+})$ und $g\in C_b^{\alpha/2, \alpha}([0,T] \times \overline{\R^d_+})$ mit $f=\Delta f = g(t,\cdot)=0$ auf $\partial \R^d_+$ (notwendig ist lediglich $f=g(t,\cdot)+\Delta f=0$ auf $\partial \R^d_+$, später wird auf diese natürlichere Bedingung abgeschwächt). Wir erhalten eine eindeutige Lösung $u\in C_b^{1+\alpha/2, 2+\alpha}([0,T]\times \overline{\R^d_+})$ sowie eine Schauderabschätzung. Zur Lösung werden die Daten ungerade auf den Ganzraum fortgesetzt und das entsprechende Ganzraumresultat angewandt. Für die Lösung dessen zeigt man dann, dass die Randwertbedingung erfüllt ist. 
+
+\subsubsection{homogen mit $\Delta$}
+
+Wie bereits im Ganzraumfall erhalten wir eine Halbgruppe auf $C_b(\overline{R^d_+})$ für die Gleichung $\partial u = \Delta u$ auf $[0,\infty) \times \overline{\R^d_+}$ mit $u(0,x)=f(x)$. Der Beweis verläuft analog zu jenem auf dem Ganzraum, jedoch nun mit dem inhomogenen Resultat für den Halbraum.
+
+\subsubsection{inhomogen mit $\A$}
+
+Mit viel Technik erhalten wir eindeutige Lösbarkeit des Cauchyproblems auf dem Halbraum mit gleichmäßig elliptischem Operator $\A$ und der natürlichen Bedingung an Inhomogenität und Anfangswert, nämlich $f=g(0,\cdot) + \A u=0$ auf $\partial \R^d_+$.
+
+\subsection{beschränktes Gebiet}
+
+Wir betrachten das inhomogene Cauchyproblem auf einem beschränkten Gebiet $\Omega$ mit $C^{2+\alpha}$-Rand. Wir überdecken den Rand des Gebiets mit Karten in den Halbraum, endlich viele davon reichen wegen Beschränktheit des Gebiets. Die Diffeomorphismen transformieren den Operator auf einem Teil des Rands zu einem Operator auf einer Halbkugel im Halbraum. Durch die Randregularität des Gebiets sind die Koeffizienten $\alpha$-Hölder-stetig. Sowohl die Randoperatoren als auch den Operator im inneren des Gebiets setzen wir durch eine Cut-Off Funktion mit $\Delta$ fort, sodass wir einen elliptischen Operator auf Halb- bzw. Ganzraum erhalten (der Laplace ist quasi Fortsetzung durch $1$). Nun können wir unsere Halbraum- und Ganzraumresultate anwenden, um eine Lösung auf dem Gebiet (durch \enquote{zusammensetzen} der Einzellösungen mit Zerlegung der Eins) zu erhalten.
+
+\end{document}
