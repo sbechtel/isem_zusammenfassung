@@ -102,7 +102,7 @@ Betrachten wir die G.W.-Halbgruppe auf $C_b(\R)$, so ist diese analytisch, aber 
 
 \section{Variation der Konstanten}
 
-Wir wollen $D_t u = \Delta u + g$ mit Anfangswert $u_0=f$ lösen. Dazu machen wir einen Ansatz über Variation der Konstanten. Die Lösung zum homogenen Problem $D_t v = \Delta v$ mit $v_0=f$ ist gegeben durch $v=T(t)f$. Das $f$ ist nun in der Rolle der zu variierenden Konstante. Wir machen den Ansatz $u(t)=T(t)f(t)$. Es soll also gelten: $$\Delta u + g = D_t u = \Delta T(t)f(t) + T(t)f'(t) = \Delta u(t) + T(t)f'(t).$$
+Wir wollen $\partial_t u = \Delta u + g$ mit Anfangswert $u_0=f$ lösen. Dazu machen wir einen Ansatz über Variation der Konstanten. Die Lösung zum homogenen Problem $\partial_t v = \Delta v$ mit $v_0=f$ ist gegeben durch $v=T(t)f$. Das $f$ ist nun in der Rolle der zu variierenden Konstante. Wir machen den Ansatz $u(t)=T(t)f(t)$. Es soll also gelten: $$\Delta u + g = \partial_t u = \Delta T(t)f(t) + T(t)f'(t) = \Delta u(t) + T(t)f'(t).$$
 
 Also benötigen wir $g = T(t)f'(t)$. Wir erheben kurz $T(t)$ zur Operatorgruppe und erhalten die Gleichung $f'(t)=T(-t)g$ und erhalten durch aufintegrieren $f(t)=f(0)+\int_0^t T(-s)g(s) \mathrm{d}s$. Durch einsetzen in unseren Ansatz erhalten wir unter Berücksichtigung von $f(0)=f$ die Lösungsformel $$u(t)=T(t)f+\int_0^t T(t-s)g(s) \mathrm{d}s.$$
 
