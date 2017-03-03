@@ -78,7 +78,7 @@ Ist $T(t)$ eine C0-Halbgruppe, so gibt es bekanntlicherweise $M\geq 1$ sowie $\o
 
 Sei nun $A$ dicht definierter, abgeschlossener Operator auf einem Banachraum $X$.
 
-In einer einfachsten Variante von Hille-Yosida gelte $M=1$ und $\omega=0$. Dann ist $A$ genau dann Generator einer Kontraktionshalbgruppe $T(t)$, wenn $(0,\infty) \subset \rho(A)$ und $\|(A-\lambda)^{-1}\|\leq 1/\Re \lambda$ für $\lambda > 0$.
+In einer einfachsten Variante von Hille-Yosida gelte $M=1$ und $\omega=0$. Dann ist $A$ genau dann Generator einer Kontraktionshalbgruppe $T(t)$, wenn $(0,\infty) \subset \rho(A)$ und $\|(A-\lambda)^{-1}\|\leq 1/\Re \lambda$ für $\Re \lambda > 0$.
 
 Diese Variante ist äquivalent zu einer Version mit $\omega\in \R$: Dann ist $A$ genau dann Generator einer C0-Halbgruppe $T(t)$ mit $\|T(t)\|\leq \mathrm{e}^{\omega t}$, wenn $(\omega, 0)\subset \rho(A)$ und $\|(A-\lambda)^{-1}\|\leq 1/(\lambda-\omega)$ für $\lambda > \omega$.
 
@@ -92,7 +92,7 @@ Für $M=1$ erhalten wir die zweite Variante aus dieser, wenn wir nur die Resolve
 
 \subsection{Beispiele: analytisch und C0 implizieren sich gegenseitig nicht}
 
-Wir betrachten auf $C_b(\R)$ die Linkstranslationshalbgruppe. Dessen Generator ist $\frac{\mathrm{d}}{\mathrm{d}x}$. Sei $f\in C_b(\R) \setminus C_b^1(\R)$, dann ist $T(t)f \not\in D(\frac{\mathrm{d}}{\mathrm{d}x})$ und somit kann die Halbgruppe nicht analytisch sein.
+Wir betrachten auf $C_b(\R)$ die Linkstranslationshalbgruppe. Deren Generator ist $\frac{\mathrm{d}}{\mathrm{d}x}$. Sei $f\in C_b(\R) \setminus C_b^1(\R)$, dann ist $T(t)f \not\in D(\frac{\mathrm{d}}{\mathrm{d}x})$ und somit kann die Halbgruppe nicht analytisch sein.
 
 Betrachten wir die G.W.-Halbgruppe auf $C_b(\R)$, so ist diese analytisch, aber nicht stark stetig. Jedoch erhalten wir durch Einschränkung auf $BUC(\R)$ eine C0-Halbgruppe.
 
@@ -136,7 +136,7 @@ Sind $X,Y$ Banachräume, $T_0,T_1:X\to Y$ stetig und es gibt eine Konstante $C>0
 
 \subsubsection{homogen mit $\A$}
 
-Wir betrachten wieder ein inhomogenes Problem in unbeschränkter Zeit, und zwar $\partial_t u = \A u$ auf $[0,\infty)\times \R^d$ mit $u(0,x)=f(x)$, wobei $f\in C_b(\R^d)$. Dieses besitzt eine Lösung $u\in C^{1,2}([0,\infty)\times \R^d) \cap C([0,\infty)\times \R^d)$ wobei zusätzlich $u\in C_b([0,T]\times \R^d)$ sowie $u\in C_\mathrm{loc}^{1+\alpha/2,2+\alpha}((0,\infty)\times \R^d)$ gilt. Die ersten beiden Aussagen machen $u$ zu einer klassischen Lösung (insbesondere Gleichung punktweise formulierbar und Anfangswert durch Stetigkeit in der $0$ sinnvoll), die Beschränktheit bei beschränkter Zeit geht über Stetigkeit hinaus, da es keine Kompaktheit im Ort gibt und die lokale Hölderregularität kommt aus der Konstruktion als lokal gleichmäßiger Limes von Lösungen des inhomogenen Problems via Arzela-Ascoli. Die Lösung kann wieder mit einer Halbgruppe assoziiert werden, die auf $C_b(\R^d)$ analytisch und auf $BUC(\R^d)$ stark-stetig ist.
+Wir betrachten wieder ein homogenes Problem in unbeschränkter Zeit, und zwar $\partial_t u = \A u$ auf $[0,\infty)\times \R^d$ mit $u(0,x)=f(x)$, wobei $f\in C_b(\R^d)$. Dieses besitzt eine Lösung $u\in C^{1,2}([0,\infty)\times \R^d) \cap C([0,\infty)\times \R^d)$ wobei zusätzlich $u\in C_b([0,T]\times \R^d)$ sowie $u\in C_\mathrm{loc}^{1+\alpha/2,2+\alpha}((0,\infty)\times \R^d)$ gilt. Die ersten beiden Aussagen machen $u$ zu einer klassischen Lösung (insbesondere Gleichung punktweise formulierbar und Anfangswert durch Stetigkeit in der $0$ sinnvoll), die Beschränktheit bei beschränkter Zeit geht über Stetigkeit hinaus, da es keine Kompaktheit im Ort gibt und die lokale Hölderregularität kommt aus der Konstruktion als lokal gleichmäßiger Limes von Lösungen des inhomogenen Problems via Arzela-Ascoli. Die Lösung kann wieder mit einer Halbgruppe assoziiert werden, die auf $C_b(\R^d)$ analytisch und auf $BUC(\R^d)$ stark-stetig ist.
 
 \subsection{Halbraum}
 
