@@ -34,6 +34,7 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\circum}{\text{\textasciicircum}}
+\newcommand{\Cb}{\mathrm{C}_\mathrm{b}}
 
 % Umgebungen für Definitionen, Sätze, usw.
 
@@ -60,6 +61,8 @@
 \DeclareMathOperator{\loc}{loc}
 \DeclareMathOperator{\pv}{pv}
 \DeclareMathOperator{\grad}{grad}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\e}{e}
 \renewcommand{\Re}{\mathrm{Re}}
 
 \begin{document}
@@ -134,6 +137,24 @@ Sind $X,Y$ Banachräume, $T_0,T_1:X\to Y$ stetig und es gibt eine Konstante $C>0
 
 \enquote{Gegenbeispiel}, falls die Konstante nicht unabhängig von $\sigma$ ist: $X=Y$ ist beliebiger Banachraum, $T_0=0$ und $T_1=1$. Dann ist für $T_\sigma$ eine solche Konstante durch $\sigma$ gegeben, aber $T_0$ ist nicht invertierbar, jedoch $T_\sigma$ für $\sigma\in (0,1]$.
 
+\subsubsection{a priori Abschätzung durch Einfrieren der Koeffizienten}
+
+Um die Stetigkeitsmethode anwenden zu können, brauchen wir eine apriori Abschätzung. Diese zeigen wir zuerst für einen Operator $\Tr(Q\mathrm{D}^2)$ mit $Q$ positiv definit. Wir wollen eine Abschätzung für den allgemeinen Operator $\A u = \Tr(Q(x)\mathrm{D}^2 u) + \langle b(x), Du\rangle + c(x)u$ erhalten, indem wir $\A$ in die Abschätzung für $\mathrm{D}_t u-\A_{x_0}$ einschieben, wobei $\A_{x_0} u\coloneqq \Tr(Q(x_0)\mathrm{D}^2 u$: 
+%
+\begin{align*}
+\|u\|_{C^{1+\alpha/2,2+\alpha}([0,T]\times \R^d)} 
+\leq C\big( & \|\mathrm{D}_t u-\A u\|_{C^{\alpha/2,\alpha}([0,T]\times \R^d)} 
++ \|\A_{x_0} u-\A u\|_{C^{\alpha/2,\alpha}([0,T]\times \R^d)} \\
+ & 
++ \|u(0,\cdot)\|_{C^{2+\alpha}(\R^d)}
+\big).\end{align*}
+
+Die Norm $\|\A_{x_0} u-\A u\|_{C^{\alpha/2,\alpha}([0,T]\times \R^d)}$ würden wir gerne durch $\varepsilon \|u\|_{C^{1+\alpha/2,2+\alpha}([0,T]\times \R^d)}$ abschätzen, um diesen Term nach links schieben zu können.
+
+Durch Lokalisierung von $u$ via Cutoff-Funktion auf $B_r(x_0)$ kriegen wir dies auch hin (mit $\varepsilon=r^\alpha$), allerdings auf Kosten eines Terms $r^{-2-\alpha}\|u\|_{C^{1,2}([0,T]\times \R^d)}$ (dieser entspringt dem Müllterm bei Anwendung von $\A_{x_0}$ auf das lokalisierte $u$).
+
+Mit einem Lemma im Peter\&Paul-Style erhält man die Abschätzung $$\|u\|_{C^{1,2}([0,T]\times \R^d)} \leq \varepsilon \|u\|_{C^{1+\alpha/2,2+\alpha}([0,T]\times \R^d)} + C \big( \|\mathrm{D}_t u-\A u\|_{C_b([0,T]\times \R^d)} + \|u(0,\cdot)\|_{C_b(\R^d)} \big),$$ somit kann man erst durch fixieren eines kleinen $r_0$ die $C^{1+\alpha/2,2+\alpha}$-Norm nach links schieben und dann durch Anwendung des Lemmas dies ebenso mit der $C^{1,2}$-Norm machen.
+
 \subsubsection{homogen mit $\A$}
 
 Wir betrachten wieder ein homogenes Problem in unbeschränkter Zeit, und zwar $\partial_t u = \A u$ auf $[0,\infty)\times \R^d$ mit $u(0,x)=f(x)$, wobei $f\in C_b(\R^d)$. Dieses besitzt eine Lösung $u\in C^{1,2}([0,\infty)\times \R^d) \cap C([0,\infty)\times \R^d)$ wobei zusätzlich $u\in C_b([0,T]\times \R^d)$ sowie $u\in C_\mathrm{loc}^{1+\alpha/2,2+\alpha}((0,\infty)\times \R^d)$ gilt. Die ersten beiden Aussagen machen $u$ zu einer klassischen Lösung (insbesondere Gleichung punktweise formulierbar und Anfangswert durch Stetigkeit in der $0$ sinnvoll), die Beschränktheit bei beschränkter Zeit geht über Stetigkeit hinaus, da es keine Kompaktheit im Ort gibt und die lokale Hölderregularität kommt aus der Konstruktion als lokal gleichmäßiger Limes von Lösungen des inhomogenen Problems via Arzela-Ascoli. Die Lösung kann wieder mit einer Halbgruppe assoziiert werden, die auf $C_b(\R^d)$ analytisch und auf $BUC(\R^d)$ stark-stetig ist.
@@ -157,5 +178,31 @@ Mit viel Technik erhalten wir eindeutige Lösbarkeit des Cauchyproblems auf dem 
 \subsection{beschränktes Gebiet}
 
 Wir betrachten das inhomogene Cauchyproblem auf einem beschränkten Gebiet $\Omega$ mit $C^{2+\alpha}$-Rand. Wir überdecken den Rand des Gebiets mit Karten in den Halbraum, endlich viele davon reichen wegen Beschränktheit des Gebiets. Die Diffeomorphismen transformieren den Operator auf einem Teil des Rands zu einem Operator auf einer Halbkugel im Halbraum. Durch die Randregularität des Gebiets sind die Koeffizienten $\alpha$-Hölder-stetig. Sowohl die Randoperatoren als auch den Operator im inneren des Gebiets setzen wir durch eine Cut-Off Funktion mit $\Delta$ fort, sodass wir einen elliptischen Operator auf Halb- bzw. Ganzraum erhalten (der Laplace ist quasi Fortsetzung durch $1$). Nun können wir unsere Halbraum- und Ganzraumresultate anwenden, um eine Lösung auf dem Gebiet (durch \enquote{zusammensetzen} der Einzellösungen mit Zerlegung der Eins) zu erhalten.
+
+\subsection{Ornstein-Uhlenbeck Operator}
+
+Wir betrachten zunächst den Operator $\Tr(Q\mathrm{D}^2 u(t,x))+\langle Bx, \mathrm{D}u(t,x)\rangle$ mit konstanten Matrizen $Q,B$, wobei $Q$ symmetrisch und positiv definit sowie $B\neq 0$, also $b(x)\coloneqq Bx$ unbeschränkt.
+
+Definiere $Q_t\coloneqq \int_0^t \e^{sB}Q\e^{sB^*}\mathrm{d}s$. Für $B$ schiefsymmetrisch (wie im Fall von $\A=\Delta$, also $B=0$) gilt $Q_t=tQ$. Definiere den Kolmogorov-Kern via $$k_t(z)\coloneqq (4\pi)^{-d/2}(\det Q_t)^{-1/2} \e^{-1/4\langle Q_t^{-1}z, z\rangle}.$$ Im Fall von $\A=\Delta$, also $Q=1$, reduziert sich der Kolmogorov-Kern zum Gauß-Weierstraß-Kern.
+
+Dann ist die Lösung der Gleichung für $f\in C_b(\R^d)$ gegeben durch Faltung mit dem Kolmogorov-Kern ausgewertet in $\e^{tB}x$, also $u(t,x)\coloneqq (k_t\ast f)(\e^{tB}x)$.
+
+Die Lösung ist eindeutig, also definiert $(T_{OU}(t)f)(x)\coloneqq (k_t\ast f)(\e^{tB}x)$ eine Halbgruppe auf $C_b(\R^d)$. Diese glättet,also ist die Halbgruppe nicht stark stetig auf $C_b(\R^d)$ mit dem gleichen Argument wie für die Gauß-Weierstraß-Halbgruppe. Auch auf $BUC(\R^d)$ ist sie nicht stark stetig, $T_{OU}(t)f$ konvergiert genau dann gleichmäßig gegen $f$, wenn $f\in BUC(\R^d)$ und $f(\e^{tB}\cdot)\to f$ gleichmäßig. Dass die Halgruppe nicht C0 ist, ist dem Raum zuzuschreiben, auf $L^p(\R^d)$ wird nämlich eine stark stetige Halbgruppe definiert.
+
+Analytisch ist sie auch nicht. Auf $L^p(\R^d)$ sieht man dies daran, dass das Spektrum eine Halbebene enthält. Idee des Beweises: $T_{OU}(t)$ lässt $BUC(\R^d)$ invariant, also wäre auch Einschränkung auf $BUC(\R^d)$ analytisch, dort führt man die Beschränktheit der Operatoren der Halbgruppe zum Widerspruch.
+
+Man kann auch hier wieder das inhomogene Problem in beschränkter Zeit betrachten: $\mathrm{D}_t u -\A u = g$ auf $[0,T]\times \R^d$ sowie $u(0,x)=f(x)$. Da die Zeitableitung der Lösung keine Hölderregularität hat (nicht mal beschränkt über $\R^d$), kann man die Forderung an $g$ relaxieren zu $g\in \Cb^{0,\alpha}([0,T]\times \R^d)$, allerdings weiterhin mit $f\in \Cb^{2+\alpha}(\R^d)$. Die Lösung ist dann $u\in \mathrm{C}^{1,2}((0,T]\times \R^d)\cap \Cb^{0,2+\alpha}([0,T]\times \R^d)$ und ist eindeutig. Außerdem gibt es eine Schauderabschätzung. 
+
+\subsection{allgemeinere elliptische Operatoren mit unbeschränkten Koeffizienten}
+
+Wir betrachten nun wieder Operatoren der Form $\A u = \Tr(Q(x)\mathrm{D}^2u)+\langle b(x), \mathrm{D}u\rangle + c(x)u$, wobei nun alle Koeffizienten nurnoch $\mathrm{C}_\mathrm{loc}^\alpha(\R^d)$ sein müssen und $Q(x)$ nicht mehr eine gemeinsame Elliptizitätskonstante haben muss, sondern diese durch eine stetige Funktion $\kappa: \R^d\to (0,\infty)$ gegeben ist, diese also nach $0$ degenerieren kann (dies umgehen wir später dadurch, dass wir $\R^d$ durch Kompakte ausschöpfen und dort $\kappa$ ein Minimum annimmt). Für $c$ muss gelten, dass es nach oben beschränkt ist. 
+
+Für das homogene Problem in unbeschränkter Zeit gibt es eine (nicht eindeutige) Lösung $u\in \mathrm{C}([0,\infty)\times \R^d)\cap \mathrm{C}_\mathrm{loc}^{1+\alpha/2,2+\alpha}((0,\infty)\times \R^d)$ mit $\|u(t,\cdot)\|_\infty \leq \e^{tc_0}\|f\|_\infty$, wobei $c_0\coloneqq \sup c$. Beachte, dass diese Abschätzung nur für die konstruierte Lösung und nicht für alle Lösungen gilt (sonst wäre die Gleichung eindeutig lösbar)!
+
+Beweisidee: Wir schöpfen $[0,\infty)\times \R^d$ durch kompakte Teilmengen aus, auf diesen hat der Operator aber wieder beschränkte Koeffizienten, also können wir das klassische Resultat für Gebiete verwenden. Durch innere Schauderabschätzungen erhalten wir lokale Hölderbeschränktheit und können durch Arzela-Ascoli und einem Diagonalfolgenargument eine Lösung konstruieren.
+
+Die Existenz einer Lyapunov-Funktion zu einem Operator $\A$ (die nichts mit jenen aus DGL zu tun hat und deren Auffindung vollkommen unklar ist) ist hinreichend für eindeutige Lösbarkeit zu dessen homogenem Problem.
+
+Im eindimensionalen Fall gibt es ein Hille-Yosida-ähnliches Resultat, dass das parabolische mit dem elliptischen Problem verknüpft: Sei $c_0\coloneqq \sup c$, dann ist $(c_0,\infty)\subset \rho(\A)$ genau dann, wenn das parabolische Problem genau eine Lösung mit Wachstumsbedingung $|u(t,x)|\leq M \e^{\rho t}$ hat, wobei $M\geq 1$ und $\rho \geq c_0$.
 
 \end{document}
