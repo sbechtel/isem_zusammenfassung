@@ -97,7 +97,7 @@ Für $M=1$ erhalten wir die zweite Variante aus dieser, wenn wir nur die Resolve
 
 Die Hille-Approximation ist gegeben durch $$\e^{tA}=\lim_n (n/t R(n/t,A))^n.$$
 
-D.h. wir brauchen $(0,\infty)\subset \rho(A)$, damit die vorkommenden Resolventen überhaupt existieren und aus der Resolventenabschätzung folgt $$\|(n/t R(n/t,A))^n\|\leq (n/t)^n \|R(n/t,A)^n\| \leq (n/t)^n (n/t)^{-n} = 1,$$ also beschränkt, was eine konvergente Folge auch leisten sollte.
+D.h. wir brauchen $(0,\infty)\subset \rho(A)$, damit die vorkommenden Resolventen überhaupt existieren und aus der Resolventenabschätzung folgt $$\|(n/t R(n/t,A))^n\|\leq (n/t)^n \|R(n/t,A)^n\| \leq (n/t)^n M (n/t)^{-n} = M,$$ also beschränkt, was eine konvergente Folge auch leisten sollte.
 
 \subsection{Beispiele: analytisch und C0 implizieren sich gegenseitig nicht}
 
@@ -115,11 +115,13 @@ Wir wollen $\partial_t u = \Delta u + g$ mit Anfangswert $u_0=f$ lösen. Dazu ma
 
 Also benötigen wir $g = T(t)f'(t)$. Wir erheben kurz $T(t)$ zur Operatorgruppe und erhalten die Gleichung $f'(t)=T(-t)g$ und erhalten durch aufintegrieren $f(t)=f(0)+\int_0^t T(-s)g(s) \mathrm{d}s$. Durch einsetzen in unseren Ansatz erhalten wir unter Berücksichtigung von $f(0)=f$ die Lösungsformel $$u(t)=T(t)f+\int_0^t T(t-s)g(s) \mathrm{d}s.$$
 
+Dabei löst $T(t)f$ das homogene Problem zum Anfangswert $f$ und $\int_0^t T(t-s)g(s)\mathrm{d}s$ das inhomogene Problem zum Anfangswert $0$. Dass die Summe das inhomogene Problem mit nichttrivialem Anfangswert löst, ist Anwendung des Superpositionsprinzips.
+
 \section{parabolische Gleichungen}
 
 \subsection{Einleitung}
 
-Unser finales Resultat wird sein, dass wir für ein beschränktes Gebiet $\Omega$ mit genügend glattem Rand das Cauchy-Problem $\partial_t u - \A u = g$ mit Anfangswert $u(0)=f$ und homogenem Dirichlet-Rand auf $[0,t]\times \overline{\Omega}$ lösen werden. Auf dem Weg dort hin werden wir sowohl einfachere Geometrien in Form von Ganzraum und Halbraum betrachten, sowie mit dem $\Delta$ als Prototypen für gleichmäßig elliptische Operatoren starten.
+Unser finales Resultat wird sein, dass wir für ein beschränktes Gebiet $\Omega$ mit genügend glattem Rand das Cauchy-Problem $\partial_t u - \A u = g$ mit Anfangswert $u(0)=f$ und homogenem Dirichlet-Rand auf $[0,T]\times \overline{\Omega}$ lösen werden. Auf dem Weg dort hin werden wir sowohl einfachere Geometrien in Form von Ganzraum und Halbraum betrachten, sowie mit dem $\Delta$ als Prototypen für gleichmäßig elliptische Operatoren starten.
 
 Neben inhomogenen Problemen in beschränkter Zeit wie oben werden wir auch homogene Probleme in unbeschränkter Zeit betrachten, die unter den Rahmen der Halbgruppentheorie fallen, z.B. $\partial_t u - \A  u = 0$ auf $[0,\infty)\times \R^d$ mit Anfangswert $u(0)=f$, wobei $f\in C_b(\R^d)$. Hierbei wird das inhomogene Problem der Schlüssel sein und gewissermaßen die Rolle des elliptischen Problems in der bekannten Theorie einnehmen...
 
@@ -128,6 +130,8 @@ Neben inhomogenen Problemen in beschränkter Zeit wie oben werden wir auch homog
 \subsubsection{homogen mit $\Delta$}
 
 Wir betrachten die Gleichung $\partial_t u = \Delta u$ auf $[0,\infty)\times \R^d$ mit Anfangswert $u(0,x)=f(x)$ für $f\in C_b(\R^d)$. Die Gauß-Weierstraß Halbgruppe liefert für jedes $f$ eine Lösung der Gleichung. Die Halbgruppe ist analytisch und eingeschränkt auf $BUC(\R^d)$ stark-stetig.
+
+Um die Analytizität zu zeigen, definieren wir \enquote{Resolventenoperatoren} auf der Halbebene via Laplace-Transformation der Halbgruppe. Diese erfüllen die Resolventengleichung und sind injektiv, also gibt es einen Operator $\A$, dessen Resolventenmenge die Halbebene enthält und dort mit der definierten Resolventenfamilie überein stimmt. Man rechnet dann nach, dass eine Resolventenabschätzung $\|R_\lambda(\A)\|\leq C/|\lambda|$ gilt, also folgt, dass der Operator sektoriell ist.
 
 \subsubsection{inhomogen mit $\Delta$}
 
@@ -141,7 +145,9 @@ Nun wollen wir in der obigen Gleichung $\Delta$ durch einen allgemeinen gleichm�
 
 Sind $X,Y$ Banachräume, $T_0,T_1:X\to Y$ stetig und es gibt eine Konstante $C>0$ mit $\|x\|_X \leq C \|T_\sigma x\|_Y$ wobei $T_\sigma = (1-\sigma) T_0 + \sigma T_1$ für $\sigma\in [0,1]$. Dann ist $T_\sigma$ invertierbar für alle $\sigma$ genau dann, wenn es für ein $\sigma$ invertierbar ist.
 
-\enquote{Gegenbeispiel}, falls die Konstante nicht unabhängig von $\sigma$ ist: $X=Y$ ist beliebiger Banachraum, $T_0=0$ und $T_1=1$. Dann ist für $T_\sigma$ eine solche Konstante durch $\sigma$ gegeben, aber $T_0$ ist nicht invertierbar, jedoch $T_\sigma$ für $\sigma\in (0,1]$.
+Die Abschätzung $\|x\|\leq C\|Tx\|$ ist notwendig,da sie äquivalent dazu ist, dass der Operator injektiv ist und abgeschlossenes Bild hat. Dass die Konstante gleichmäßig ist, wird benutzt, um eine uniforme Schrittweite zu erhalten.
+
+Beweisskizzen: Um die Invertierbarkeit zu zeigen, kann man entweder die Neumann-Reihe benutzen, oder, da Injektivität bereits gegeben ist, die Surjektivität mit Banach'schem Fixpunktsatz zeigen. Um die Invertierbarkeit auf $[0,1]$ zu zeigen, kann man ein Zusammenhangsargument benutzen, oder das Intervall mit entlichen Schritten ausschöpfen.
 
 \subsubsection{a priori Abschätzung durch Einfrieren der Koeffizienten}
 
@@ -179,7 +185,7 @@ Wie bereits im Ganzraumfall erhalten wir eine Halbgruppe auf $C_b(\overline{R^d_
 
 \subsubsection{inhomogen mit $\A$}
 
-Mit viel Technik erhalten wir eindeutige Lösbarkeit des Cauchyproblems auf dem Halbraum mit gleichmäßig elliptischem Operator $\A$ und der natürlichen Bedingung an Inhomogenität und Anfangswert, nämlich $f=g(0,\cdot) + \A u=0$ auf $\partial \R^d_+$.
+Mit viel Technik erhalten wir eindeutige Lösbarkeit des Cauchyproblems auf dem Halbraum mit gleichmäßig elliptischem Operator $\A$ und der natürlichen Bedingung an Inhomogenität und Anfangswert, nämlich $f=g(0,\cdot) + \A f=0$ auf $\partial \R^d_+$.
 
 \subsection{beschränktes Gebiet}
 
