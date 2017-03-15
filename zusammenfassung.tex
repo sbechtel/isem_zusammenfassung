@@ -147,11 +147,11 @@ Sind $X,Y$ Banachräume, $T_0,T_1:X\to Y$ stetig und es gibt eine Konstante $C>0
 
 Die Abschätzung $\|x\|\leq C\|Tx\|$ ist notwendig,da sie äquivalent dazu ist, dass der Operator injektiv ist und abgeschlossenes Bild hat. Dass die Konstante gleichmäßig ist, wird benutzt, um eine uniforme Schrittweite zu erhalten.
 
-Beweisskizzen: Um die Invertierbarkeit zu zeigen, kann man entweder die Neumann-Reihe benutzen, oder, da Injektivität bereits gegeben ist, die Surjektivität mit Banach'schem Fixpunktsatz zeigen. Um die Invertierbarkeit auf $[0,1]$ zu zeigen, kann man ein Zusammenhangsargument benutzen, oder das Intervall mit entlichen Schritten ausschöpfen.
+Beweisskizzen: Um die Invertierbarkeit zu zeigen, kann man entweder die Neumann-Reihe benutzen, oder, da Injektivität bereits gegeben ist, die Surjektivität mit Banach'schem Fixpunktsatz zeigen. Um die Invertierbarkeit auf $[0,1]$ zu zeigen, kann man ein Zusammenhangsargument benutzen, oder das Intervall mit endlichen Schritten ausschöpfen.
 
 \subsubsection{a priori Abschätzung durch Einfrieren der Koeffizienten}
 
-Um die Stetigkeitsmethode anwenden zu können, brauchen wir eine apriori Abschätzung. Diese zeigen wir zuerst für einen Operator $\Tr(Q\mathrm{D}^2)$ mit $Q$ positiv definit. Wir wollen eine Abschätzung für den allgemeinen Operator $\A u = \Tr(Q(x)\mathrm{D}^2 u) + \langle b(x), Du\rangle + c(x)u$ erhalten, indem wir $\A$ in die Abschätzung für $\mathrm{D}_t u-\A_{x_0}$ einschieben, wobei $\A_{x_0} u\coloneqq \Tr(Q(x_0)\mathrm{D}^2 u$: 
+Um die Stetigkeitsmethode anwenden zu können, brauchen wir eine apriori Abschätzung. Diese zeigen wir zuerst für einen Operator $\Tr(Q\mathrm{D}^2)$ mit $Q$ positiv definit. Wir wollen eine Abschätzung für den allgemeinen Operator $\A u = \Tr(Q(x)\mathrm{D}^2 u) + \langle b(x), Du\rangle + c(x)u$ erhalten, indem wir $\A$ in die Abschätzung für $\mathrm{D}_t u-\A_{x_0}$ einschieben, wobei $\A_{x_0} u\coloneqq \Tr(Q(x_0)\mathrm{D}^2 u)$: 
 %
 \begin{align*}
 \|u\|_{C^{1+\alpha/2,2+\alpha}([0,T]\times \R^d)} 
@@ -207,7 +207,7 @@ Man kann auch hier wieder das inhomogene Problem in beschränkter Zeit betrachte
 
 \subsection{allgemeinere elliptische Operatoren mit unbeschränkten Koeffizienten}
 
-Wir betrachten nun wieder Operatoren der Form $\A u = \Tr(Q(x)\mathrm{D}^2u)+\langle b(x), \mathrm{D}u\rangle + c(x)u$, wobei nun alle Koeffizienten nurnoch $\mathrm{C}_\mathrm{loc}^\alpha(\R^d)$ sein müssen und $Q(x)$ nicht mehr eine gemeinsame Elliptizitätskonstante haben muss, sondern diese durch eine stetige Funktion $\kappa: \R^d\to (0,\infty)$ gegeben ist, diese also nach $0$ degenerieren kann (dies umgehen wir später dadurch, dass wir $\R^d$ durch Kompakte ausschöpfen und dort $\kappa$ ein Minimum annimmt). Für $c$ muss gelten, dass es nach oben beschränkt ist. 
+Wir betrachten nun wieder Operatoren der Form $\A u = \Tr(Q(x)\mathrm{D}^2u)+\langle b(x), \mathrm{D}u\rangle + c(x)u$, wobei nun alle Koeffizienten nurnoch $\mathrm{C}_\mathrm{loc}^\alpha(\R^d)$ sein müssen und $Q(x)$ nicht mehr eine gemeinsame Elliptizitätskonstante haben muss, sondern diese durch eine stetige Funktion $\kappa: \R^d\to (0,\infty)$ gegeben ist, diese also nach $0$ degenerieren kann (dies umgehen wir später dadurch, dass wir $\R^d$ durch Kompakta ausschöpfen und dort $\kappa$ ein Minimum annimmt). Für $c$ muss gelten, dass es nach oben beschränkt ist. 
 
 Für das homogene Problem in unbeschränkter Zeit gibt es eine (nicht eindeutige) Lösung $u\in \mathrm{C}([0,\infty)\times \R^d)\cap \mathrm{C}_\mathrm{loc}^{1+\alpha/2,2+\alpha}((0,\infty)\times \R^d)$ mit $\|u(t,\cdot)\|_\infty \leq \e^{tc_0}\|f\|_\infty$, wobei $c_0\coloneqq \sup c$. Beachte, dass diese Abschätzung nur für die konstruierte Lösung und nicht für alle Lösungen gilt (sonst wäre die Gleichung eindeutig lösbar)!
 
